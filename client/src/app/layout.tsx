@@ -1,22 +1,18 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { Inter as FontSans } from "next/font/google";
 import "./globals.css";
+import { cn } from "@/lib/utils";
+import { Toaster } from "sonner";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+const fontSans = FontSans({
+  subsets: ["latin"],
+  variable: "--font-sans",
 });
 
 export const metadata: Metadata = {
-  title: "Chatter Box",
-  description:
-    "Chatter Box is the perfect solution for seamless group communication, designed to keep friends, families, and teams connected in real time. With an intuitive interface and powerful features, Chatter Box transforms the way you interact with your group.",
+  title: "QuickChat",
+  description: "Quick Chat App",
 };
 
 export default function RootLayout({
@@ -27,9 +23,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={cn(
+          "min-h-screen bg-background font-sans antialiased",
+          fontSans.variable
+        )}
       >
         {children}
+        <Toaster richColors duration={5000} />
       </body>
     </html>
   );
