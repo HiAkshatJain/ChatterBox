@@ -4,12 +4,12 @@ import { Kafka, logLevel } from "kafkajs"; // Import Kafka and logLevel from kaf
 export const kafka = new Kafka({
   brokers: [process.env.KAFKA_BROKER!], // Set the Kafka broker URL from environment variables
   ssl: true, // Enable SSL for secure communication
-  sasl: {
-    // Configure SASL authentication
-    mechanism: "scram-sha-256", // Use SCRAM-SHA-256 mechanism for authentication
-    username: process.env.KAFKA_USERNAME!, // Set the username from environment variables
-    password: process.env.KAFKA_PASSWORD!, // Set the password from environment variables
-  },
+  // sasl: {
+  //   // Configure SASL authentication
+  //   mechanism: "scram-sha-256", // Use SCRAM-SHA-256 mechanism for authentication
+  //   username: process.env.KAFKA_USERNAME!, // Set the username from environment variables
+  //   password: process.env.KAFKA_PASSWORD!, // Set the password from environment variables
+  // },
   logLevel: logLevel.ERROR, // Set the log level to ERROR to minimize logging output
 });
 
